@@ -43,7 +43,9 @@ grails.project.dependency.resolution = {
         runtime ':hibernate:3.6.10.6'
         runtime "org.grails.plugins:resources:1.1.6"
         build ':tomcat:7.0.47'
-
+		
+		compile ':twitter4j:4.0.4.3'
+		
         compile "org.grails.plugins:spring-security-core:2.0-RC2"
         compile "org.grails.plugins:spring-security-twitter:0.6"
     }

@@ -8,7 +8,7 @@
 // grails.plugins.springsecurity.twitter.consumerKey=<...>
 // grails.plugins.springsecurity.twitter.consumerSecret=<...>
 //
-grails.config.locations = ["file:${userHome}/.grails/simplify_xfer-config.properties"]
+//grails.config.locations = ["file:${userHome}/.grails/simplify_xfer-config.properties"]
 
 
 grails.project.groupId = appName // change this to alter the default package name and Maven publishing destination
@@ -91,6 +91,10 @@ log4j = {
 
     debug 'com.the6hours'
     debug 'SpringSecurityTwitterGrailsPlugin'
+	
+	debug 'grails.app.controllers.simplify_xfer'
+	debug 'grails.app.services.simplify_xfer'
+	debug 'simplify_xfer'
 }
 
 // Added by the Spring Security Core plugin:
@@ -116,6 +120,21 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 //
 //
 grails.plugin.springsecurity.twitter.domain.classname='com.the6hours.example.TwitterUser'
+
+
+grails.plugin.springsecurity.twitter.consumerKey='5TLoMSfR4Q2fKT5swikoxyMAq'
+grails.plugin.springsecurity.twitter.consumerSecret='0CSpQv1CUtv0lpgU1Z9eTGur1AMyxqf4trZ22z8deHxRO57DiV'
+
+twitter4j {
+	enableTwitter4jController = true
+	'default' {
+		debugEnabled           = true
+		OAuthConsumerKey       = grails.plugin.springsecurity.twitter.consumerKey
+		OAuthConsumerSecret    = grails.plugin.springsecurity.twitter.consumerSecret
+		OAuthAccessToken       = '3035440825-mAhu53zue84gmUYDFiVeEJisSTr6JF0XO3vjpM7'
+		OAuthAccessTokenSecret = 'Ao9UiyunHq4stYx8sTV0stunMLio7E9d1xiBjY9w8aHhA'
+	}
+}
 
 //use custom roles (by default it's ROLE_USER,ROLE_TWITTER)
 //grails.plugins.springsecurity.twitter.autoCreate.roles='ROLE_USER,ROLE_TWITTER,ROLE_SOCIAL'
