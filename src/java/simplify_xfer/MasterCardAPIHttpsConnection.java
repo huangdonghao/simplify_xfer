@@ -24,7 +24,7 @@ import java.util.Map;
  */
 public class MasterCardAPIHttpsConnection {
 
-    private String clientId = "ApyjTbI5xPE7ak73xcoTAK1a5dYWUXY3FbRrdQO-e26d23b0!414e6b414738467564786e7863394435482b436b6856383d";
+    private String consumerKey = "ApyjTbI5xPE7ak73xcoTAK1a5dYWUXY3FbRrdQO-e26d23b0!414e6b414738467564786e7863394435482b436b6856383d";
 
     /**
      * Establish an OAuth connection to a MasterCard API over HTTPS.
@@ -34,13 +34,13 @@ public class MasterCardAPIHttpsConnection {
      * 			   as the body of the request.  If the body parameter is null, an HTTP GET
      *             will be established.
      */
-    public HttpsURLConnection createOpenAPIConnection(String httpsURL, String body) throws NoSuchAlgorithmException, InvalidKeySpecException, IOException, OAuthException, KeyStoreException, CertificateException, UnrecoverableKeyException, KeyManagementException, UnrecoverableEntryException {
+    public HttpsURLConnection createOpenAPIConnection(String httpsURL, String body, String method) throws NoSuchAlgorithmException, InvalidKeySpecException, IOException, OAuthException, KeyStoreException, CertificateException, UnrecoverableKeyException, KeyManagementException, UnrecoverableEntryException {
         HttpsURLConnection con = null;
         PrivateKey privKey = getPrivateKey();
         if (privKey != null) {
             OAuthRsaSha1Signer rsaSigner = new OAuthRsaSha1Signer();
             OAuthParameters params = new OAuthParameters();
-            params.setOAuthConsumerKey(clientId);
+            params.setOAuthConsumerKey(consumerKey);
             params.setOAuthNonce(OAuthUtil.getNonce());
             params.setOAuthTimestamp(OAuthUtil.getTimestamp());
             params.setOAuthSignatureMethod("RSA-SHA1");
@@ -48,9 +48,9 @@ public class MasterCardAPIHttpsConnection {
             params.addCustomBaseParameter("oauth_version", "1.0");
             rsaSigner.setPrivateKey(privKey);
 
-            String method = "GET";
+            //String method = "GET";
             if (body != null) {
-                method = "POST";
+              //  method = "POST";
 
                 MessageDigest digest = MessageDigest.getInstance("SHA-1");
                 digest.reset();
