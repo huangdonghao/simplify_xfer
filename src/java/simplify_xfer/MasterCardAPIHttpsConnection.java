@@ -48,10 +48,7 @@ public class MasterCardAPIHttpsConnection {
             params.addCustomBaseParameter("oauth_version", "1.0");
             rsaSigner.setPrivateKey(privKey);
 
-            //String method = "GET";
             if (body != null) {
-              //  method = "POST";
-
                 MessageDigest digest = MessageDigest.getInstance("SHA-1");
                 digest.reset();
                 byte[] hash = digest.digest(body.getBytes("UTF-8"));
@@ -69,10 +66,10 @@ public class MasterCardAPIHttpsConnection {
 
             URL url = new URL(httpsURL);
             con = (HttpsURLConnection) url.openConnection();
-            con.setRequestMethod(method);
-            con.setSSLSocketFactory((SSLSocketFactory)SSLSocketFactory.getDefault());
             con.setDoOutput(true);
             con.setDoInput(true);
+            con.setRequestMethod(method);
+            con.setSSLSocketFactory((SSLSocketFactory)SSLSocketFactory.getDefault());
             con.addRequestProperty("Authorization",	buildAuthHeaderString(params));
 
             System.out.println(buildAuthHeaderString(params));
@@ -115,6 +112,7 @@ public class MasterCardAPIHttpsConnection {
             String keyAlias = "MyKeyAlias";
 
             KeyStore ks = KeyStore.getInstance("PKCS12");
+
 
 
             // get user password and file input stream

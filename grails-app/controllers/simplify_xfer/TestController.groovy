@@ -26,4 +26,8 @@ class TestController {
     def checkCard() {
         render(text: masterCardOpenAPIService.checkCardEligible(), contentType: "text/xml", encoding: "UTF-8")
     }
+
+    def transferRequest() {
+        render(text: masterCardOpenAPIService.transferRequest(), contentType: "text/xml", encoding: "UTF-8")
+    }
 }
